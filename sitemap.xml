@@ -3,10 +3,9 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://penangtransportservice.com/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-
     <image:image>
       <image:loc>https://penangtransportservice.com/logo.webp</image:loc>
       <image:title>Penang Transportation Service Logo</image:title>
@@ -23,7 +22,6 @@
       <image:loc>https://penangtransportservice.com/airport.webp</image:loc>
       <image:title>Laluan Perkhidmatan Lapangan Terbang Antarabangsa Pulau Pinang</image:title>
     </image:image>
-
     <image:image>
       <image:loc>https://penangtransportservice.com/s1.webp</image:loc>
       <image:title>Perkhidmatan Shuttle Pulau Pinang</image:title>
@@ -52,7 +50,6 @@
       <image:loc>https://penangtransportservice.com/s7.webp</image:loc>
       <image:title>Logistik Pengangkutan Acara Pulau Pinang</image:title>
     </image:image>
-
     <image:image>
       <image:loc>https://penangtransportservice.com/car1.webp</image:loc>
       <image:title>Perkhidmatan Teksi Pulau Pinang</image:title>
@@ -77,7 +74,6 @@
       <image:loc>https://penangtransportservice.com/car6.webp</image:loc>
       <image:title>Sewa Toyota Alphard Pulau Pinang</image:title>
     </image:image>
-
     <image:image>
       <image:loc>https://penangtransportservice.com/us.webp</image:loc>
       <image:title>Kenapa Pilih Penang Transportation Service</image:title>
