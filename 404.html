@@ -11,6 +11,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    (function() {
+      var validRoutes = ['/about', '/services', '/routes', '/fleet', '/contact'];
+      var path = window.location.pathname.replace(/\/$/, '');
+      if (validRoutes.indexOf(path) !== -1) {
+        window.location.replace('/?p=' + encodeURIComponent(path));
+      }
+    })();
+  </script>
+
   <style>
     :root {
       color-scheme: light;
@@ -498,14 +509,14 @@
 <body>
 
   <header id="hd">
-    <a href="index.html" class="brand"><img class="mark" src="logo.webp" width="36" height="36" decoding="async" alt="Penang Transportation Service"><span>Penang Transportation Service</span></a>
+    <a href="/" class="brand"><img class="mark" src="logo.webp" width="36" height="36" decoding="async" alt="Penang Transportation Service"><span>Penang Transportation Service</span></a>
     <button class="burger" id="bg" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
     <nav id="nv" aria-label="Main Navigation">
-      <a class="l" href="index.html#about" data-ms="Tentang Kami">About</a>
-      <a class="l" href="index.html#services" data-ms="Perkhidmatan">Services</a>
-      <a class="l" href="index.html#routes" data-ms="Laluan">Routes</a>
-      <a class="l" href="index.html#fleet" data-ms="Kenderaan">Fleet</a>
-      <a class="l" href="index.html#contact" data-ms="Hubungi">Contact</a>
+      <a class="l" href="/about" data-ms="Tentang Kami">About</a>
+      <a class="l" href="/services" data-ms="Perkhidmatan">Services</a>
+      <a class="l" href="/routes" data-ms="Laluan">Routes</a>
+      <a class="l" href="/fleet" data-ms="Kenderaan">Fleet</a>
+      <a class="l" href="/contact" data-ms="Hubungi">Contact</a>
       <button class="lang" id="lg" aria-label="Language">BM</button>
     </nav>
   </header>
@@ -519,7 +530,7 @@
         Sorry, the page you are looking for does not exist or has been moved. Please return to the home page or contact us via WhatsApp.
       </p>
       <div class="cta">
-        <a href="index.html" class="btn" data-ms="Kembali ke Halaman Utama">Back to Home</a>
+        <a href="/" class="btn" data-ms="Kembali ke Halaman Utama">Back to Home</a>
         <a href="https://wa.me/60102761963" target="_blank" rel="noopener" class="btn k">WhatsApp</a>
       </div>
     </div>
@@ -531,7 +542,7 @@
         <div class="brand"><img class="mark" src="logo.webp" width="36" height="36" loading="lazy" decoding="async" alt="Penang Transportation Service"><span>Penang Transportation Service</span></div>
         <div data-ms="Pengangkutan yang selamat dan boleh dipercayai di Pulau Pinang.">Safe and reliable transportation in Penang.</div>
       </div>
-      <div><b data-ms="Pautan">Links</b><a href="index.html#about" data-ms="Tentang Kami">About</a><a href="index.html#services" data-ms="Perkhidmatan">Services</a><a href="index.html#routes" data-ms="Laluan">Routes</a><a href="index.html#fleet" data-ms="Kenderaan">Fleet</a><a href="index.html#contact" data-ms="Hubungi">Contact</a></div>
+      <div><b data-ms="Pautan">Links</b><a href="/about" data-ms="Tentang Kami">About</a><a href="/services" data-ms="Perkhidmatan">Services</a><a href="/routes" data-ms="Laluan">Routes</a><a href="/fleet" data-ms="Kenderaan">Fleet</a><a href="/contact" data-ms="Hubungi">Contact</a></div>
       <div><b data-ms="Hubungi">Contact</b><a href="tel:+60102761963">010 276 1963</a><a href="tel:+60124330417">012 433 0417</a><a href="mailto:dianahehsan@gmail.com">dianahehsan@gmail.com</a><span class="li">SSM 201603049013 (PG0386063D)</span></div>
       <small>&copy; 2026 Penang Transportation Service</small>
     </div>
@@ -553,18 +564,36 @@
 
       function closeMenu() {
         nv.classList.remove('open');
+        hd.classList.remove('menu');
         bg.classList.remove('x');
         bg.setAttribute('aria-expanded', 'false');
       }
 
       bg.onclick = function () {
         var o = nv.classList.toggle('open');
+        hd.classList.toggle('menu', o);
         bg.classList.toggle('x', o);
         bg.setAttribute('aria-expanded', o);
       };
 
-      nv.addEventListener('click', function (e) {
-        if (e.target.closest('a')) closeMenu();
+      var routeMap = {
+        '/': 'home',
+        '/about': 'about',
+        '/services': 'services',
+        '/routes': 'routes',
+        '/fleet': 'fleet',
+        '/contact': 'contact'
+      };
+
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a');
+        if (a) {
+          var href = a.getAttribute('href');
+          if (href && routeMap[href]) {
+            e.preventDefault();
+            window.location.href = href === '/' ? '/' : '/?p=' + encodeURIComponent(href);
+          }
+        }
       });
 
       var lang = 'ms',
